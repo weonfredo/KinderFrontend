@@ -1,0 +1,16 @@
+.fondo{
+    background-image: url("https://static.vecteezy.com/system/resources/previews/027/716/989/non_2x/park-cute-kawaii-lo-fi-background-summer-green-grass-and-trees-good-weather-2d-cartoon-landscape-illustration-lofi-aesthetic-wallpaper-desktop-japanese-anime-scenery-dreamy-vibes-vector.jpg"); 
+    position: relative;
+    height: 100vh;
+}
+
+.contenido {
+    display: flex; /* Utiliza flexbox para centrar */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    position: relative;
+    top: 10%;
+    max-height: 80vh; /* Ocupa al menos toda la altura de la ventana */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad */
+    border-radius: 20px;
+  }
