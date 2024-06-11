@@ -1,13 +1,13 @@
 import React from 'react';
 import { SecurityScanOutlined, FormOutlined, NotificationOutlined ,PieChartOutlined,FolderAddOutlined,SnippetsOutlined} from '@ant-design/icons';
 
-const sidebarItems = [
+const sidebarItems= [
   {
     key: 'sub1',
     icon: React.createElement(SecurityScanOutlined),
     label: 'Seguridad',
     children: [
-      { key: '1', label: 'Permisos' },
+      { key: '1', label: 'Permisos', to:"/login" },
       { key: '2', label: 'Modulos' },
       { key: '3', label: 'Usuarios' },
       { key: '4', label: 'Pefiles' },

@@ -106,6 +106,7 @@ import React, { useState } from "react";
 import { Button, Layout, Menu } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import sidebarItems from "./data"; // Importa la data de items de tu data.js
+import { Link } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -133,7 +134,17 @@ const PageLayout = ({ children }) => {
           defaultOpenKeys={[""]}
           style={{ height: "100%" }}
           items={sidebarItems} // Usar los items del menú importados
-        />
+        >
+          {sidebarItems.map((item) => (
+            <Menu.Item key={item.key} icon={item.icon}>
+              {item.to ? (
+                <Link to={item.to}>{item.label}</Link> // Utiliza Link para crear el enlace
+              ) : (
+                item.label
+              )}
+            </Menu.Item>
+          ))}
+        </Menu>
       </Sider>
       <Layout>
         <Header
