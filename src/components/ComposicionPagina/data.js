@@ -7,10 +7,10 @@ const sidebarItems= [
     icon: React.createElement(SecurityScanOutlined),
     label: 'Seguridad',
     children: [
-      { key: '1', label: 'Permisos', to:"/login" },
-      { key: '2', label: 'Modulos' },
-      { key: '3', label: 'Usuarios' },
-      { key: '4', label: 'Pefiles' },
+      { key: '1', label: 'Permisos', to: '/permissions' },
+      { key: '2', label: 'Modulos', to: '/modules' },
+      { key: '3', label: 'Usuarios', to: '/users' },
+      { key: '4', label: 'Pefiles', to: '/profiles' },
     ]
   },
   {
@@ -18,8 +18,8 @@ const sidebarItems= [
     icon: React.createElement(FormOutlined),
     label: 'Matriculas',
     children: [
-      { key: '5', label: 'Inscribir alumno', icon:React.createElement(FormOutlined) },
-      { key: '6', label: 'Lista Matriculado' },
+      { key: '5', label: 'Inscribir alumno', to: '/enroll-student' },
+      { key: '6', label: 'Lista Matriculado', to: '/enrolled-list' },
     ]
   },
   { 
@@ -27,9 +27,9 @@ const sidebarItems= [
     icon: React.createElement(SnippetsOutlined),
     label: 'Planificacion',
     children: [
-      { key: '7', label: 'Aulas' }, 
-      { key: '8', label: 'Cursos' }, 
-      { key: '9', label: 'Horarios' }
+      { key: '7', label: 'Aulas', to: '/classrooms' }, 
+      { key: '8', label: 'Cursos', to: '/courses' }, 
+      { key: '9', label: 'Horarios', to: '/schedules' }
     ]
   },
   {
@@ -37,8 +37,8 @@ const sidebarItems= [
     icon: React.createElement(FolderAddOutlined),
     label: 'Registro',
     children: [
-      { key: '10', label: 'Notas' },
-      { key: '11', label: 'Asistencias' },
+      { key: '10', label: 'Notas', to: '/grades' },
+      { key: '11', label: 'Asistencias', to: '/attendances' },
     ]
   },
   {
@@ -46,9 +46,9 @@ const sidebarItems= [
     icon: React.createElement(PieChartOutlined),
     label: 'Caja',
     children: [
-      { key: '12', label: 'Pagos' },
-      { key: '13', label: 'Caja' },
-      { key: '14', label: 'Control estudiantes' }
+      { key: '12', label: 'Pagos', to: '/payments' },
+      { key: '13', label: 'Caja', to: '/cash-register' },
+      { key: '14', label: 'Control estudiantes', to: '/student-control' }
     ]
   },
   {
@@ -56,9 +56,9 @@ const sidebarItems= [
     icon: React.createElement(NotificationOutlined),
     label: 'Reportes',
     children: [
-      { key: '15', label: 'Notas' },
-      { key: '16', label: 'Pagos' },
-      { key: '17', label: 'Asistencias' }
+      { key: '15', label: 'Notas', to: '/grade-reports' },
+      { key: '16', label: 'Pagos', to: '/payment-reports' },
+      { key: '17', label: 'Asistencias', to: '/attendance-reports' }
     ]
   }
 ];
