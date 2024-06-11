@@ -5,7 +5,8 @@
 }
 
 .contenido {
-    display: flex; /* Utiliza flexbox para centrar */
+    display: grid; /* Utiliza flexbox para centrar */
+    grid-template-columns: 1fr 1fr;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     position: relative;
