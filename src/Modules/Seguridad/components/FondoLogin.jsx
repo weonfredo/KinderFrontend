@@ -7,9 +7,9 @@ function FondoLogin() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const cw = (canvas.width = 500);
+    const cw = (canvas.width = 400);
     const cx = cw / 2;
-    const ch = (canvas.height = 500);
+    const ch = (canvas.height = 400);
     const cy = (3 * ch) / 4;
 
     const rad = Math.PI / 180;

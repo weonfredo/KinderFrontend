@@ -13,6 +13,14 @@ const PageLayout = ({ children }) => {
     setCollapsed(!collapsed);
   };
 
+  const transformMenuItems = (items) =>
+    items.map((item) => ({
+      key: item.key,
+      icon: item.icon,
+      label: item.to ? <Link to={item.to}>{item.label}</Link> : item.label,
+      children: item.children ? transformMenuItems(item.children) : null,
+    }));
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -28,18 +36,8 @@ const PageLayout = ({ children }) => {
           defaultSelectedKeys={[""]}
           defaultOpenKeys={[""]}
           style={{ height: "100%" }}
-          inlineCollapsed={collapsed} // Utiliza inlineCollapsed para controlar el colapso del menú
-        >
-          {sidebarItems.map((item) => (
-            <Menu.SubMenu key={item.key} icon={item.icon} title={item.label}>
-              {item.children.map((subItem) => (
-                <Menu.Item key={subItem.key}>
-                  <Link to={subItem.to}>{subItem.label}</Link>
-                </Menu.Item>
-              ))}
-            </Menu.SubMenu>
-          ))}
-        </Menu>
+          items={transformMenuItems(sidebarItems)}
+        />
       </Sider>
       <Layout>
         <Header
@@ -57,17 +55,7 @@ const PageLayout = ({ children }) => {
             style={{ fontSize: "16px", width: 64, height: 64 }}
           />
         </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: "#fff",
-            color: "#000",
-          }}
-        >
-          {children}
-        </Content>
+        <Content className="m-4 p-4 bg-white ">{children}</Content>
         <Footer style={{ textAlign: "center" }}>
           Team programming ©{new Date().getFullYear()} Created by The
           chamaquitos EIRL

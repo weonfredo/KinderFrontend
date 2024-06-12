@@ -1,9 +1,15 @@
 import React from 'react';
-import { SecurityScanOutlined, FormOutlined, NotificationOutlined ,PieChartOutlined,FolderAddOutlined,SnippetsOutlined} from '@ant-design/icons';
+import { SecurityScanOutlined, FormOutlined, NotificationOutlined ,PieChartOutlined,FolderAddOutlined,SnippetsOutlined,HomeOutlined } from '@ant-design/icons';
 
-const sidebarItems= [
+const sidebarItems = [
   {
     key: 'sub1',
+    icon: React.createElement(HomeOutlined),
+    label: 'Pagina Principal',
+    to: '/home'
+  },
+  {
+    key: 'sub2',
     icon: React.createElement(SecurityScanOutlined),
     label: 'Seguridad',
     children: [
@@ -14,16 +20,16 @@ const sidebarItems= [
     ]
   },
   {
-    key: 'sub2',
+    key: 'sub3',
     icon: React.createElement(FormOutlined),
     label: 'Matriculas',
     children: [
-      { key: '5', label: 'Inscribir alumno', to: '/enroll-student' },
+      { key: '5', label: 'Inscribir alumno', to: '/inscribiralumno' },
       { key: '6', label: 'Lista Matriculado', to: '/enrolled-list' },
     ]
   },
   { 
-    key: 'sub3',
+    key: 'sub4',
     icon: React.createElement(SnippetsOutlined),
     label: 'Planificacion',
     children: [
@@ -33,7 +39,7 @@ const sidebarItems= [
     ]
   },
   {
-    key: 'sub4',
+    key: 'sub5',
     icon: React.createElement(FolderAddOutlined),
     label: 'Registro',
     children: [
@@ -42,7 +48,7 @@ const sidebarItems= [
     ]
   },
   {
-    key: 'sub5',
+    key: 'sub6',
     icon: React.createElement(PieChartOutlined),
     label: 'Caja',
     children: [
@@ -52,7 +58,7 @@ const sidebarItems= [
     ]
   },
   {
-    key: 'sub6',
+    key: 'sub7',
     icon: React.createElement(NotificationOutlined),
     label: 'Reportes',
     children: [
