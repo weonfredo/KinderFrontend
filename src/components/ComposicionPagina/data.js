@@ -46,9 +46,9 @@ const sidebarItems= [
     icon: React.createElement(PieChartOutlined),
     label: 'Caja',
     children: [
-      { key: '12', label: 'Pagos', to: '/payments' },
-      { key: '13', label: 'Caja', to: '/cash-register' },
-      { key: '14', label: 'Control estudiantes', to: '/student-control' }
+      { key: '12', label: 'Pagos', to: '/pagos' },
+      { key: '13', label: 'Caja', to: '/caja' },
+      { key: '14', label: 'Control estudiantes', to: '/controlestudiantes' }
     ]
   },
   {
