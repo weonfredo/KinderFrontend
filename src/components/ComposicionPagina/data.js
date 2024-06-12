@@ -37,8 +37,8 @@ const sidebarItems= [
     icon: React.createElement(FolderAddOutlined),
     label: 'Registro',
     children: [
-      { key: '10', label: 'Notas', to: '/grades' },
-      { key: '11', label: 'Asistencias', to: '/attendances' },
+      { key: '10', label: 'Notas', to: '/seleccionnota' },
+      { key: '11', label: 'Asistencias', to: '/seleccionasistencia' },
     ]
   },
   {
