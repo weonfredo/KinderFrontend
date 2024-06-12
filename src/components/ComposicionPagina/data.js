@@ -56,9 +56,9 @@ const sidebarItems = [
     icon: React.createElement(NotificationOutlined),
     label: 'Reportes',
     children: [
-      { key: '15', label: 'Notas' },
-      { key: '16', label: 'Pagos' },
-      { key: '17', label: 'Asistencias' }
+      { key: '15', label: 'Notas', to: '/reportesnota' },
+      { key: '16', label: 'Pagos', to: '/payment-reports' },
+      { key: '17', label: 'Asistencias', to: '/reportesasistencia' }
     ]
   }
 ];
