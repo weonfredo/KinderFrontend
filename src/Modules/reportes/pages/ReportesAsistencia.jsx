@@ -5,11 +5,12 @@ import Imputfecha from '../components/imputfecha';
 import GradoSelect from  '../components/gradoselect';
 import AulaSelect from '../components/aulaselect';
 import TurnoSelect from '../components/turnoselect';
+import "../styles/estilo.css"
 
 function ReportesAsistencia() {
   return (
     <PageLayout> 
-      <div className='relative' > 
+      <div className='pagina' > 
       <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'black', fontSize: '32px', fontWeight: 'bold' }}>
         REPORTES DE ASISTENCIA
       </h2>

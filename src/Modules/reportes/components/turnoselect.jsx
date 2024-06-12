@@ -3,7 +3,7 @@ import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
 const TurnoSelect = ({ value, onChange }) => {
   return (
-    <FormControl variant="outlined">
+    <FormControl variant="outlined" className='w-28 '>
       <InputLabel id="select-turno-label">Turno</InputLabel>
       <Select
         labelId="select-turno-label"

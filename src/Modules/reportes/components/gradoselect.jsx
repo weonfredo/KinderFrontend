@@ -3,7 +3,7 @@ import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
 const GradoSelect = ({ value, onChange }) => {
   return (
-    <FormControl variant="outlined">
+    <FormControl variant="outlined" className='w-28 '>
       <InputLabel id="select-grado-label">Grado</InputLabel>
       <Select
         labelId="select-grado-label"

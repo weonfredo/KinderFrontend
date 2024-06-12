@@ -1,8 +1,10 @@
 import React from 'react';
 import { DatePicker, Space, theme } from 'antd';
+import { Height } from '@mui/icons-material';
 const Imputfecha = () => {
   const { token } = theme.useToken();
   const style = {
+    
     border: `1px solid ${token.colorPrimary}`,
     borderRadius: '50%',
   };
