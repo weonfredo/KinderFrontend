@@ -84,8 +84,8 @@ const ListaContenido = () => {
                 description={
                   <div className="grid grid-flow-col-dense">
                     <div>DNI: {item.dni}</div>
-                    <div>Grado: {item.grado.nombre}</div>
-                    <div>Sección: {item.seccion.nombre}</div>
+                    <div>Grado: {item.aula.grado.nombre}</div>
+                    <div>Sección: {item.aula.seccion.nombre}</div>
                     <div>Aula: {item.aula.nombre}</div>
                     <div>Apoderado: {item.apoderado.nombres}</div>
                   </div>

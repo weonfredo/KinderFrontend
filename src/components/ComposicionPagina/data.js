@@ -1,5 +1,5 @@
 import React from 'react';
-import { SecurityScanOutlined, FormOutlined, NotificationOutlined ,PieChartOutlined,FolderAddOutlined,SnippetsOutlined,HomeOutlined } from '@ant-design/icons';
+import { SecurityScanOutlined,GlobalOutlined, FormOutlined, NotificationOutlined ,PieChartOutlined,FolderAddOutlined,SnippetsOutlined,HomeOutlined } from '@ant-design/icons';
 
 const sidebarItems = [
   {
@@ -10,71 +10,74 @@ const sidebarItems = [
   },
   {
     key: 'sub2',
-    icon: React.createElement(SecurityScanOutlined),
-    label: 'Seguridad',
+    icon: React.createElement(GlobalOutlined),
+    label: 'Administrador',
     children: [
-      { key: '1', label: 'Permisos', to: '/permisos' },
-      { key: '2', label: 'Modulos', to: '/modulos' },
-      { key: '3', label: 'Usuarios', to: '/usuarios' },
-      { key: '4', label: 'Pefiles', to: '/perfiles' },
+      { key: '1', label: 'Establecimiento', to: '/establecimiento' },
+      { key: '2', label: 'Sucursal', to: '/sucursal' },
     ]
   },
   {
     key: 'sub3',
-    icon: React.createElement(FormOutlined),
-    label: 'Matriculas',
+    icon: React.createElement(SecurityScanOutlined),
+    label: 'Seguridad',
     children: [
-      { key: '5', label: 'Inscribir Alumno', to: '/inscribiralumno' },
-      { key: '6', label: 'Inscribir Apoderado', to: '/inscribirapoderado' },
-      { key: '7', label: 'Lista Matriculado', to: '/listamatricula' },
-    ]
-  },
-  { 
-    key: 'sub4',
-    icon: React.createElement(SnippetsOutlined),
-    label: 'Planificacion',
-    children: [
-      { key: '8', label: 'Aulas', to: '/aulas' }, 
-      { key: '9', label: 'Cursos', to: '/cursos' }, 
-      { key: '10', label: 'Horarios', to: '/horarios' }
+      { key: '3', label: 'Permisos', to: '/permisos' },
+      { key: '4', label: 'Modulos', to: '/modulos' },
+      { key: '5', label: 'Usuarios', to: '/usuarios' },
+      { key: '6', label: 'Pefiles', to: '/perfiles' },
+      { key: '7', label: 'Crear Caja', to: '/crearcaja' },
     ]
   },
   {
-    key: 'sub5',
-    icon: React.createElement(FolderAddOutlined),
-    label: 'Registro',
+    key: 'sub4',
+    icon: React.createElement(FormOutlined),
+    label: 'Matriculas',
     children: [
-
-      { key: '10', label: 'Notas', to: '/seleccionnota' },
-      { key: '11', label: 'Asistencias', to: '/seleccionasistencia' },
-
-      { key: '11', label: 'Notas', to: '/notas' },
-      { key: '12', label: 'Asistencias', to: '/asistencias' },
-
+      { key: '8', label: 'Inscribir Alumno', to: '/inscribiralumno' },
+      { key: '9', label: 'Inscribir Apoderado', to: '/inscribirapoderado' },
+      { key: '10', label: 'Lista Matriculado', to: '/listamatricula' },
+    ]
+  },
+  { 
+    key: 'sub5',
+    icon: React.createElement(SnippetsOutlined),
+    label: 'Planificacion',
+    children: [
+      { key: '11', label: 'Aulas', to: '/aulas' }, 
+      { key: '12', label: 'Cursos', to: '/cursos' }, 
+      { key: '13', label: 'Horarios', to: '/horarios' }
     ]
   },
   {
     key: 'sub6',
-    icon: React.createElement(PieChartOutlined),
-    label: 'Caja',
+    icon: React.createElement(FolderAddOutlined),
+    label: 'Registro',
     children: [
-      { key: '13', label: 'Pagos', to: '/pagos' },
-      { key: '14', label: 'Caja', to: '/caja' },
-      { key: '15', label: 'Control estudiantes', to: '/controlestudiantes' }
+
+      { key: '14', label: 'Notas', to: '/notas' },
+      { key: '15', label: 'Asistencias', to: '/asistencias' },
+
     ]
   },
   {
     key: 'sub7',
+    icon: React.createElement(PieChartOutlined),
+    label: 'Caja',
+    children: [
+      { key: '16', label: 'Pagos', to: '/pagos' },
+      { key: '17', label: 'Caja', to: '/caja' },
+      { key: '18', label: 'Control estudiantes', to: '/controlestudiantes' }
+    ]
+  },
+  {
+    key: 'sub8',
     icon: React.createElement(NotificationOutlined),
     label: 'Reportes',
     children: [
-
-      { key: '15', label: 'Reporte Notas', to: '/reportesnotas' },
-      { key: '16', label: 'Reporte Pagos', to: '/payment-reports' },
-      { key: '17', label: 'Asistencias', to: '/reportesasistencia'} ,
-      { key: '16', label: 'Notas', to: '/reportesnotas' },
-      { key: '17', label: 'Pagos', to: '/reportespagos' },
-      { key: '18', label: 'Asistencias', to: '/reportesasistencia' }
+      { key: '19', label: 'Notas', to: '/reportesnotas' },
+      { key: '20', label: 'Pagos', to: '/reportespagos' },
+      { key: '21', label: 'Asistencias', to: '/reportesasistencia' }
 
     ]
   }
