@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PageLayout from "../../../../components/ComposicionPagina";
 
 const links = [
@@ -11,12 +11,17 @@ const stats = [
   { name: "Docentes", value: "12" },
   { name: "Estudiantes", value: "300+" },
   { name: "Aulas", value: "40" },
-  { name: "Paid time off", value: "Unlimited" },
+  { name: "Usuario", value: "Unlimited" },
 ];
+
 function PaginaPrincipal() {
+  const [token, setToken] = useState("");
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    console.log("Token:", token);
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
   }, []);
 
   return (
@@ -56,13 +61,17 @@ function PaginaPrincipal() {
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
               Kinder Garden
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <p className=" text-lg leading-8 text-gray-300">
               Cada día es una aventura emocionante llena de descubrimientos.
               ¡Únete a nosotros en esta maravillosa travesía hacia un futuro
               brillante y lleno de posibilidades!
             </p>
+            {/* Mostrar el token en el header */}
+            {/* <p className="mt-4 text-base text-gray-300 relative">
+              Token: {token}
+            </p> */}
           </div>
-          <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+          <div className="mx-auto mt-4 max-w-2xl lg:mx-0 lg:max-w-none">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
               {links.map((link) => (
                 <a key={link.name} href={link.href}>
