@@ -9,7 +9,6 @@ import Usuarios from "./Modules/Seguridad/pages/Usuarios/Usuarios";
 import Perfiles from "./Modules/Seguridad/pages/Perfiles";
 import Permisos from "./Modules/Seguridad/pages/Permisos";
 import Modulos from "./Modules/Seguridad/pages/Modulos";
-import CrearCaja from "./Modules/Seguridad/pages/CrearCaja";
 //matricula
 import FormularioAlumno from "./Modules/Matricula/pages/RegistrarAlumno/FormularioAlumno";
 import FormularioApoderado from "./Modules/Matricula/pages/RegistrarApoderado/FormularioApoderado";
@@ -30,9 +29,10 @@ import ReportesAsistencia from "./Modules/reportes/pages/ReportesAsistencia";
 import ReportesNotas from "./Modules/reportes/pages/ReportesNotas";
 import ReportesPagos from "./Modules/reportes/pages/ReportesPagos";
 
-//Admin
-import Sucursal from "./Modules/Aministrador/Sucursal";
-import Establecimiento from "./Modules/Aministrador/Establecimiento";
+//libreta
+import Libreta from "./Modules/reportes/components/libretanotas";
+
+
 
 function App() {
   return (
@@ -45,15 +45,11 @@ function App() {
         {/* Todas las rutas protegidas */}
         <Route element={<RutasProtegidas />}>
           <Route path="/home" element={<PaginaPrincipal />} />
-          {/* Pagina Admin */}
-          <Route path="/establecimiento" element={<Establecimiento />} />
-          <Route path="/sucursal" element={<Sucursal />} />
           {/* Rutas específicas de seguridad */}
           <Route path="/permisos" element={<Permisos />} />
           <Route path="/modulos" element={<Modulos />} />
           <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/perfiles" element={<Perfiles />} />
-          <Route path="/crearcaja" element={<CrearCaja />} />
           {/* Rutas específicas de matricula */}
           <Route path="/inscribiralumno" element={<FormularioAlumno />} />
           <Route path="/inscribirapoderado" element={<FormularioApoderado />} />
@@ -71,8 +67,10 @@ function App() {
           <Route path="/pagos" element={<Pagos />} />
           {/* Rutas específicas de reportes */}
           <Route path="/reportesasistencia" element={<ReportesAsistencia />} />
-          <Route path="/reportesnotas" element={<ReportesNotas />} />
           <Route path="/reportespagos" element={<ReportesPagos />} />
+          <Route path="/reportesnotas" element={<ReportesNotas />} />
+          <Route path="/libretanotas" element={<Libreta />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,88 +1,109 @@
-// import React from "react";
-// import PageLayout from '../../../components/ComposicionPagina/Layout';
-// import Notas from '../components/buscadorasis';
-// import GradoSelect from '../components/gradoselect';
-// import AulaSelect from "../components/aulaselect";
-// import TurnoSelect from "../components/turnoselect";
-// import CursoSelect from "../components/cursosselect";
-// import PeriodoSelect from "../components/periodoselect";
-
-// function ReportesNotas() {
-//     return (
-
-//       <PageLayout>
-//         <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'black', fontSize: '32px', fontWeight: 'bold' }}>
-//           NOTAS
-//         </h2>
-//         <GradoSelect/>
-//         <AulaSelect/>
-//          <TurnoSelect/>
-//          <CursoSelect/>
-//         <PeriodoSelect/>
-//         <Notas />
-//       </PageLayout>
-
-// function ReportesNotas() {
-//     return (
-
-//       <PageLayout>
-//         <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'black', fontSize: '32px', fontWeight: 'bold' }}>
-//           REPORTES DE NOTAS
-//         </h2>
-//         <GradoSelect/>
-//         <AulaSelect/>
-//          <TurnoSelect/>
-//          <CursoSelect/>
-//         <PeriodoSelect/>
-//         <Notas />
-//       </PageLayout>
-//     );
-//   }
-//   export default ReportesNotas;
-
 import React, { useState } from "react";
 import { Typography, Table, Input, Button, Select, message } from "antd";
 import { ExportOutlined } from "@ant-design/icons";
 import PageLayout from "../../../components/ComposicionPagina/Layout";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const { Title } = Typography;
 const { Option } = Select;
 
 const ReportesNotas = () => {
   const [filtroDni, setFiltroDni] = useState("");
+  const [filtroNombre, setFiltroNombre] = useState("");
   const [filtroGrado, setFiltroGrado] = useState("");
   const [filtroSeccion, setFiltroSeccion] = useState("");
   const [filtroCurso, setFiltroCurso] = useState("");
   const [filtroTurno, setFiltroTurno] = useState("");
-  const [filtroSemestre, setFiltroSemestre] = useState("");
+ 
+  const [filtroBimestre, setFiltroBimestre] = useState("");
+  const [dataFiltrada, setDataFiltrada] = useState([]);
+
+  const data = [
+    {
+      key: "1",
+      dni: "12345678",
+      nombre: "Juan Pérez",
+      grado: "1°",
+      seccion: "A",
+      curso: "Matemáticas",
+      turno: "Mañana",
+      bimestre: "1",
+      promedio: 15.5,
+    },
+    {
+      key: "2",
+      dni: "87654321",
+      nombre: "María García",
+      grado: "5°",
+      seccion: "B",
+      curso: "Ciencias",
+      turno: "Tarde",
+      bimestre: "2",
+      promedio: 17.2,
+    },
+    // Agregar más datos según sea necesario
+  ];
 
   const handleBuscarReporte = () => {
-    // Lógica para buscar reporte según filtros
-    console.log(
-      "Filtros aplicados:",
-      filtroDni,
-      filtroGrado,
-      filtroSeccion,
-      filtroCurso,
-      filtroTurno,
-      filtroSemestre
-    );
-    // Implementar lógica para obtener y mostrar los datos del reporte
+    // Filtrar los datos según los criterios de búsqueda
+    const filtrado = data.filter((item) => {
+      return (
+        (filtroDni === "" || item.dni.includes(filtroDni)) &&
+        (filtroNombre === "" || item.nombre.toLowerCase().includes(filtroNombre.toLowerCase())) &&
+        (filtroGrado === "" || item.grado === filtroGrado) &&
+        (filtroSeccion === "" || item.seccion === filtroSeccion) &&
+        (filtroCurso === "" || item.curso.toLowerCase().includes(filtroCurso.toLowerCase())) &&
+        (filtroTurno === "" || item.turno === filtroTurno) &&
+    
+        (filtroBimestre === "" || item.bimestre === filtroBimestre)
+      );
+    });
+    setDataFiltrada(filtrado);
   };
 
   const handleExportarPDF = () => {
     // Lógica para exportar a PDF
     message.info("Exportando a PDF...");
-    // Aquí deberías implementar la lógica real para exportar a PDF
+
+    const doc = new jsPDF();
+    doc.text("Reporte de Notas", 20, 10);
+    doc.autoTable({
+      head: [
+        [
+          "DNI",
+          "Nombre",
+          "Apellido",
+          "Grado",
+          "Sección",
+          "Curso",
+          "Turno",
+          "Bimestre",
+          "Promedio",
+        ],
+      ],
+      body: dataFiltrada.map((item) => [
+        item.dni,
+        item.nombre,
+        item.apellido,
+        item.grado,
+        item.seccion,
+        item.curso,
+        item.turno,
+        item.bimestre,
+        item.promedio,
+      ]),
+    });
+    doc.save("reporte_notas.pdf");
   };
 
   const handleExportarExcel = () => {
     // Lógica para exportar a Excel
     message.info("Exportando a Excel...");
 
-    const worksheet = XLSX.utils.json_to_sheet(data);
+    const worksheet = XLSX.utils.json_to_sheet(dataFiltrada);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Reporte de Notas");
     const excelBuffer = XLSX.write(workbook, {
@@ -107,6 +128,11 @@ const ReportesNotas = () => {
       key: "nombre",
     },
     {
+      title: "Apellido",
+      dataIndex: "apellido",
+      key: "apellido",
+    },
+    {
       title: "Grado",
       dataIndex: "grado",
       key: "grado",
@@ -127,34 +153,15 @@ const ReportesNotas = () => {
       key: "turno",
     },
     {
+      title: "Bimestre",
+      dataIndex: "bimestre",
+      key: "bimestre",
+    },
+    {
       title: "Promedio",
       dataIndex: "promedio",
       key: "promedio",
     },
-  ];
-
-  const data = [
-    {
-      key: "1",
-      dni: "12345678",
-      nombre: "Juan Pérez",
-      grado: "6°",
-      seccion: "A",
-      curso: "Matemáticas",
-      turno: "Mañana",
-      promedio: 15.5,
-    },
-    {
-      key: "2",
-      dni: "87654321",
-      nombre: "María García",
-      grado: "5°",
-      seccion: "B",
-      curso: "Ciencias",
-      turno: "Tarde",
-      promedio: 17.2,
-    },
-    // Agregar más datos según sea necesario
   ];
 
   return (
@@ -169,15 +176,21 @@ const ReportesNotas = () => {
               value={filtroDni}
               onChange={(e) => setFiltroDni(e.target.value)}
             />
+            <Input
+              placeholder="Nombre del alumno"
+              style={{ width: 200 }}
+              value={filtroNombre}
+              onChange={(e) => setFiltroNombre(e.target.value)}
+            />
             <Select
               placeholder="Grado"
               style={{ width: 120 }}
               value={filtroGrado}
               onChange={(value) => setFiltroGrado(value)}
             >
-              <Option value="5°">5°</Option>
-              <Option value="6°">6°</Option>
-              <Option value="7°">7°</Option>
+              <Option value="1°">1°</Option>
+              <Option value="2°">2°</Option>
+              <Option value="3°">3°</Option>
             </Select>
             <Select
               placeholder="Sección"
@@ -203,16 +216,18 @@ const ReportesNotas = () => {
             >
               <Option value="Mañana">Mañana</Option>
               <Option value="Tarde">Tarde</Option>
-              <Option value="Noche">Noche</Option>
             </Select>
+        
             <Select
-              placeholder="Semestre académico"
-              style={{ width: 180 }}
-              value={filtroSemestre}
-              onChange={(value) => setFiltroSemestre(value)}
+              placeholder="Bimestre"
+              style={{ width: 120 }}
+              value={filtroBimestre}
+              onChange={(value) => setFiltroBimestre(value)}
             >
-              <Option value="1">Primer semestre</Option>
-              <Option value="2">Segundo semestre</Option>
+              <Option value="1">1</Option>
+              <Option value="2">2</Option>
+              <Option value="3">3</Option>
+              <Option value="4">4</Option>
             </Select>
             <Button type="primary" onClick={handleBuscarReporte}>
               Buscar
@@ -224,7 +239,7 @@ const ReportesNotas = () => {
               Exportar Excel
             </Button>
           </div>
-          <Table columns={columns} dataSource={data} pagination={false} />
+          <Table columns={columns} dataSource={dataFiltrada} pagination={false} />
         </div>
       </div>
     </PageLayout>
