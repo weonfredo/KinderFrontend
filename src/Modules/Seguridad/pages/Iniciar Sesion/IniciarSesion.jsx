@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Checkbox, message } from "antd";
+import { Form, Input, Button, message } from "antd";
+import { Link } from "react-router-dom";
 import FondoLogin from "../../components/FondoLogin";
-import axios from "axios";
-import "./IniciarSesion.css";
+
+import tokenItem from "../../../../utils/TokenItem";
 
 const IniciarSesion = () => {
   const [clientReady, setClientReady] = useState(false);
@@ -13,20 +14,19 @@ const IniciarSesion = () => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.post(
-        // "kinder.app.informaticapp.com:3055/auth/login",
-        "localhost/:8080/auth/login",
-        {
-          username: values.username,
-          password: values.password,
-        }
-      );
+      const response = await tokenItem.post("/auth/login", {
+        username: values.username,
+        password: values.password,
+      });
 
       if (response.data.token) {
-        // Guardar el token en localStorage
+        // Guardar el token y el nombre de usuario en localStorage
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("username", values.username);
+
         // Redireccionar al usuario a la página de inicio
         window.location.href = "/home";
+
         // Mensaje de éxito
         message.success("Inicio de sesión exitoso");
       } else {
@@ -38,6 +38,14 @@ const IniciarSesion = () => {
       console.error("Error al iniciar sesión:", error);
       message.error("Error al iniciar sesión");
     }
+  };
+
+  const handleLogout = () => {
+    // Limpiar el token y cualquier otro dato del usuario en localStorage
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    // Redireccionar al usuario a la página de inicio de sesión
+    window.location.href = "/login";
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -60,9 +68,6 @@ const IniciarSesion = () => {
             wrapperCol={{
               span: 16,
             }}
-            // style={{
-            //   maxWidth: 600,
-            // }}
             initialValues={{
               remember: true,
             }}
@@ -94,17 +99,11 @@ const IniciarSesion = () => {
             >
               <Input.Password />
             </Form.Item>
-
-            <Form.Item
-              valuePropName="checked"
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            >
-              {/* <Checkbox>Remember me</Checkbox> */}
-            </Form.Item>
-
+            <Link to="/register">
+              <p className="text-white inline-block relative hover:text-blue-300 py-3 ">
+                Registrarse
+              </p>
+            </Link>
             <Form.Item
               wrapperCol={{
                 offset: 8,
@@ -112,7 +111,7 @@ const IniciarSesion = () => {
               }}
             >
               <Button type="primary" htmlType="submit" disabled={!clientReady}>
-                Iniciar Sesion
+                Iniciar Sesión
               </Button>
             </Form.Item>
           </Form>

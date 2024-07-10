@@ -2,7 +2,7 @@ import React from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Form, Input, Radio, Select, Cascader, Button } from "antd";
 import { initialFormValues } from "./Data";
-import "./Alumno.css";
+import "./Apoderado.css";
 
 const Alumno = ({ form, onSubmit, values, disabled }) => {
   return (
@@ -16,7 +16,7 @@ const Alumno = ({ form, onSubmit, values, disabled }) => {
       disabled={disabled}
     >
       <div className="general h-full first-letter:grid grid-cols-2 ">
-        <h2 className="text-center text-2xl">Datos Estudiante</h2>
+        <h2 className="text-center text-2xl">Datos Apoderado</h2>
         <Form.Item
           label="DNI"
           name="dni"
@@ -39,6 +39,27 @@ const Alumno = ({ form, onSubmit, values, disabled }) => {
           <Input />
         </Form.Item>
         <Form.Item
+          label="Telefono"
+          name="telefono"
+          rules={[{ required: true, message: "Ingrese el telefono!" }]}
+        >
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          label="Direccion"
+          name="direccion"
+          rules={[{ required: true, message: "Ingrese la Direccion!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Ocupacion"
+          name="ocupacion"
+          rules={[{ required: true, message: "Ingrese la ocupacion!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
           label="Sexo"
           name="sexo"
           rules={[{ required: true, message: "Seleccione el Sexo!" }]}
@@ -49,55 +70,24 @@ const Alumno = ({ form, onSubmit, values, disabled }) => {
           </Radio.Group>
         </Form.Item>
         <Form.Item
-          label="Select"
-          name="select"
-          rules={[{ required: true, message: "Seleccione una opción!" }]}
-        >
-          <Select>
-            <Select.Option value="demo">Demo</Select.Option>
-          </Select>
-        </Form.Item>
-        <Form.Item
-          label="Direccion"
-          name="direccion"
-          rules={[{ required: true, message: "Ingrese la Direccion!" }]}
+          label="Estado Civil"
+          name="estado_civil"
+          rules={[{ required: true, message: "Ingrese el estado civil!" }]}
         >
           <Input />
         </Form.Item>
-
         <Form.Item
-          label="Lugar Nacimiento"
-          name="lugar_nacimiento"
-          rules={[
-            { required: true, message: "Seleccione el Lugar de nacimiento!" },
-          ]}
+          label="email"
+          name="email"
+          rules={[{ required: true, message: "Ingrese el correo!" }]}
         >
-          <Cascader
-            options={[
-              {
-                value: "San Martin",
-                label: "SAN MARTIN",
-                children: [
-                  {
-                    value: "San Martin",
-                    label: "SAN MARTIN",
-                    children: [
-                      {
-                        value: "tarapoto",
-                        label: "TARAPOTO",
-                      },
-                    ],
-                  },
-                ],
-              },
-            ]}
-          />
+          <Input type="email" />
         </Form.Item>
         {!disabled && (
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            {/* <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit">
               Submit
-            </Button> */}
+            </Button>
           </Form.Item>
         )}
       </div>

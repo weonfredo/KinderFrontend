@@ -1,30 +1,3 @@
-// import React from "react";
-// import PageLayout from '../../../components/ComposicionPagina/Layout';
-// import Notas from '../components/buscadorasis';
-// import GradoSelect from '../components/gradoselect';
-// import AulaSelect from "../components/aulaselect";
-// import TurnoSelect from "../components/turnoselect";
-// import CursoSelect from "../components/cursosselect";
-// import PeriodoSelect from "../components/periodoselect";
-
-// function ReportesNotas() {
-//     return (
-
-//       <PageLayout>
-//         <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'black', fontSize: '32px', fontWeight: 'bold' }}>
-//           REPORTES DE NOTAS
-//         </h2>
-//         <GradoSelect/>
-//         <AulaSelect/>
-//          <TurnoSelect/>
-//          <CursoSelect/>
-//         <PeriodoSelect/>
-//         <Notas />
-//       </PageLayout>
-//     );
-//   }
-//   export default ReportesNotas;
-
 import React, { useState } from "react";
 import { Typography, Table, Input, Button, Select, message } from "antd";
 import { ExportOutlined } from "@ant-design/icons";
@@ -35,7 +8,7 @@ import * as XLSX from "xlsx";
 const { Title } = Typography;
 const { Option } = Select;
 
-const ReportesNotas = () => {
+const ReportesPagos = () => {
   const [filtroDni, setFiltroDni] = useState("");
   const [filtroGrado, setFiltroGrado] = useState("");
   const [filtroSeccion, setFiltroSeccion] = useState("");
@@ -69,14 +42,14 @@ const ReportesNotas = () => {
 
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Reporte de Notas");
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Reporte de Pagos");
     const excelBuffer = XLSX.write(workbook, {
       bookType: "xlsx",
       type: "array",
     });
     saveAs(
       new Blob([excelBuffer], { type: "application/octet-stream" }),
-      "reporte_notas.xlsx"
+      "reporte_pagos.xlsx"
     );
   };
 
@@ -112,9 +85,9 @@ const ReportesNotas = () => {
       key: "turno",
     },
     {
-      title: "Promedio",
-      dataIndex: "promedio",
-      key: "promedio",
+      title: "Monto Pagado",
+      dataIndex: "montoPagado",
+      key: "montoPagado",
     },
   ];
 
@@ -127,7 +100,7 @@ const ReportesNotas = () => {
       seccion: "A",
       curso: "Matemáticas",
       turno: "Mañana",
-      promedio: 15.5,
+      montoPagado: 250.0,
     },
     {
       key: "2",
@@ -137,7 +110,7 @@ const ReportesNotas = () => {
       seccion: "B",
       curso: "Ciencias",
       turno: "Tarde",
-      promedio: 17.2,
+      montoPagado: 300.0,
     },
     // Agregar más datos según sea necesario
   ];
@@ -146,7 +119,7 @@ const ReportesNotas = () => {
     <PageLayout>
       <div className="container mx-auto p-4">
         <div className="bg-white rounded-lg shadow-md p-4">
-          <Title level={2}>Reporte de Notas</Title>
+          <Title level={2}>Reporte de Pagos</Title>
           <div className="flex flex-wrap gap-4 mb-4">
             <Input
               placeholder="DNI del alumno"
@@ -216,4 +189,4 @@ const ReportesNotas = () => {
   );
 };
 
-export default ReportesNotas;
+export default ReportesPagos;
