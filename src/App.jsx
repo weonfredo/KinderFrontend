@@ -11,12 +11,6 @@ import Permisos from "./Modules/Seguridad/pages/Permisos";
 import Modulos from "./Modules/Seguridad/pages/Modulos";
 //matricula
 import FormularioAlumno from "./Modules/Matricula/pages/RegistrarAlumno/FormularioAlumno";
-<<<<<<< HEAD
-import SeleccionAsistencia from "./Modules/Registro/pages/SeleccionAsistencia/SeleccionAsistencia";
-import Asistencia from "./Modules/Registro/pages/Asistencia/Asistencia";
-import SeleccionNota from "./Modules/Registro/pages/SeleccionNota/SeleccionNota";
-import Notas from "./Modules/Registro/pages/Notas/Notas";
-=======
 import FormularioApoderado from "./Modules/Matricula/pages/RegistrarApoderado/FormularioApoderado";
 import ListaMatriculados from "./Modules/Matricula/pages/ListaMatriculados";
 //planificacion
@@ -27,7 +21,6 @@ import Horarios from "./Modules/Planificacion/Horarios";
 import Notas from "./Modules/Registros/Notas/Notas";
 import Asistencias from "./Modules/Registros/Asistencias";
 //caja
->>>>>>> 3a8e8455969866297ae8d624001f66edb21478b5
 import Caja from "./Modules/Caja/pages/caja";
 import ControlEstudiante from "./Modules/Caja/pages/controlEstudiante";
 import Pagos from "./Modules/Caja/pages/pagos";
@@ -42,19 +35,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/register" element={<Registrarse />} />
-<<<<<<< HEAD
-        <Route path="/reportesasistencia" element={<ReportesAsistencia />} />
-        <Route path="/reportesnotas" element={<ReportesNotas/>}/>
-        <Route path="/rnotas" element={<ReportesNotas/>}/>
-        <Route path="/inscribiralumno" element={<FormularioAlumno/>}/>
-        <Route path="/caja" element={<Caja />} />
-        <Route path="/controlestudiantes" element={<ControlEstudiante />} />
-        <Route path="/pagos" element={<Pagos />} />
-        <Route path="/seleccionasistencia" element={<SeleccionAsistencia />} />
-        <Route path="/asistencia" element={<Asistencia />} />
-        <Route path="/seleccionnota" element={<SeleccionNota />} />
-        <Route path="/notas" element={<Notas />} />
-=======
         <Route path="/login" element={<IniciarSesion />} />
 
         {/* Todas las rutas protegidas */}
@@ -85,7 +65,6 @@ function App() {
           <Route path="/reportesnotas" element={<ReportesNotas />} />
           <Route path="/reportespagos" element={<ReportesPagos />} />
         </Route>
->>>>>>> 3a8e8455969866297ae8d624001f66edb21478b5
       </Routes>
     </BrowserRouter>
   );

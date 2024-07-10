@@ -44,13 +44,13 @@ const sidebarItems = [
     icon: React.createElement(FolderAddOutlined),
     label: 'Registro',
     children: [
-<<<<<<< HEAD
+
       { key: '10', label: 'Notas', to: '/seleccionnota' },
       { key: '11', label: 'Asistencias', to: '/seleccionasistencia' },
-=======
+
       { key: '11', label: 'Notas', to: '/notas' },
       { key: '12', label: 'Asistencias', to: '/asistencias' },
->>>>>>> 3a8e8455969866297ae8d624001f66edb21478b5
+
     ]
   },
   {
@@ -68,15 +68,14 @@ const sidebarItems = [
     icon: React.createElement(NotificationOutlined),
     label: 'Reportes',
     children: [
-<<<<<<< HEAD
+
       { key: '15', label: 'Reporte Notas', to: '/reportesnotas' },
       { key: '16', label: 'Reporte Pagos', to: '/payment-reports' },
-      { key: '17', label: 'Asistencias', to: '/reportesasistencia' }
-=======
+      { key: '17', label: 'Asistencias', to: '/reportesasistencia'} ,
       { key: '16', label: 'Notas', to: '/reportesnotas' },
       { key: '17', label: 'Pagos', to: '/reportespagos' },
       { key: '18', label: 'Asistencias', to: '/reportesasistencia' }
->>>>>>> 3a8e8455969866297ae8d624001f66edb21478b5
+
     ]
   }
 ];

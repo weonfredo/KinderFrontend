@@ -7,22 +7,21 @@
 // import CursoSelect from "../components/cursosselect";
 // import PeriodoSelect from "../components/periodoselect";
 
-<<<<<<< HEAD
-function ReportesNotas() {
-    return (
-       
-      <PageLayout>
-        <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'black', fontSize: '32px', fontWeight: 'bold' }}>
-          NOTAS
-        </h2> 
-        <GradoSelect/>
-        <AulaSelect/>
-         <TurnoSelect/>
-         <CursoSelect/>
-        <PeriodoSelect/>
-        <Notas /> 
-      </PageLayout>
-=======
+// function ReportesNotas() {
+//     return (
+
+//       <PageLayout>
+//         <h2 style={{ textAlign: 'center', margin: '20px 0', color: 'black', fontSize: '32px', fontWeight: 'bold' }}>
+//           NOTAS
+//         </h2>
+//         <GradoSelect/>
+//         <AulaSelect/>
+//          <TurnoSelect/>
+//          <CursoSelect/>
+//         <PeriodoSelect/>
+//         <Notas />
+//       </PageLayout>
+
 // function ReportesNotas() {
 //     return (
 
@@ -69,7 +68,6 @@ const ReportesNotas = () => {
       filtroCurso,
       filtroTurno,
       filtroSemestre
->>>>>>> 3a8e8455969866297ae8d624001f66edb21478b5
     );
     // Implementar lógica para obtener y mostrar los datos del reporte
   };
